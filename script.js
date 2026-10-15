@@ -3,23 +3,15 @@
    =================================================================== */
 const EVENT_START = '2026-10-30T14:30:00+05:30';   // 30 Oct 2026, 2.30 PM (Sri Lanka time)
 
-/* ARTIST REVEAL
-   - Leave `name` empty  -> the card stays sealed.
-   - Fill in `name` (and optionally role + img) -> the card flips open and reveals the artist.
-   - Set REVEAL_AT to a date/time to keep everything sealed until then (auto-reveals at that moment).
-   - Preview the revealed look any time with:  index.html?reveal                                   */
-const REVEAL_AT = null;   // e.g. '2026-10-25T18:00:00+05:30'
-const ARTISTS = [
-  { title: 'The Headline Act', name: '', role: '', img: '' },          // img e.g. 'assets/artists/headline.jpg'
-  { title: 'Special Guest',    name: '', role: '', img: '' },
-  { title: 'Special Guest',    name: '', role: '', img: '' }
-];
-
 /* INVITED SCHOOLS — add { name, logo } entries. Empty `name` shows a "Joining soon" slot. */
 const SCHOOLS = [
-  // { name: 'Example College', logo: 'assets/schools/example.png' },
-  { name: '', logo: '' }, { name: '', logo: '' }, { name: '', logo: '' }, { name: '', logo: '' },
-  { name: '', logo: '' }, { name: '', logo: '' }, { name: '', logo: '' }, { name: '', logo: '' }
+  { name: 'Gothami Balika Vidyalaya', logo: 'assets/gothami.webp' },
+  { name: 'Anula Vidyalaya', logo: 'assets/anula.webp' },
+  { name: 'Mahinda Rajapakse National School, Homagama', logo: 'assets/mahinda.webp' },
+  { name: 'Ananda Sastralaya, Kotte', logo: 'assets/ananda.webp' },
+  { name: 'Sri Sumangala Balika Maha Vidyalaya, Panadura', logo: 'assets/sumangala.webp' },
+  { name: 'Sujatha Balika Maha Vidyalaya, Matara', logo: 'assets/sujatha.webp' },
+  { name: 'Piliyandala Central College', logo: 'assets/piliyandala.webp' }
 ];
 
 /* ===================================================================
@@ -28,7 +20,6 @@ const SCHOOLS = [
 const $  = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const PREVIEW = new URLSearchParams(location.search).has('reveal');
 
 /* Dharma-wheel ornament (inline SVG, inherits currentColor) */
 function wheelSVG() {
@@ -219,69 +210,6 @@ $$('[data-tilt]').forEach(el => {
   });
   el.addEventListener('pointerleave', () => { el.style.transform = ''; });
 });
-
-/* ===================================================================
-   Artist reveal
-   =================================================================== */
-(function artists() {
-  const wrap = $('#artists'), note = $('#revealNote');
-  const timeOpen = !REVEAL_AT || Date.now() >= new Date(REVEAL_AT).getTime();
-  const items = ARTISTS.map((a, i) => {
-    const name = a.name || (PREVIEW ? 'Artist Name' : '');
-    return { ...a, name, open: !!name && (timeOpen || PREVIEW) };
-  });
-  const sil = '<svg viewBox="0 0 200 260"><path d="M100 30c26 0 44 20 44 48 0 22-12 40-26 48 40 8 68 30 74 134H8c6-104 34-126 74-134-14-8-26-26-26-48 0-28 18-48 44-48z"/></svg>';
-  wrap.innerHTML = items.map((a, i) => `
-    <div class="acard rv${a.open ? ' open' : ''}" style="--d:${i * .12}s" tabindex="0" role="button" aria-label="${a.open ? a.name : 'Sealed — to be revealed'}">
-      <div class="ai">
-        <div class="af front">
-          <div class="wm" data-wheel></div>
-          <div class="sil">${sil}</div>
-          <div class="q">?</div>
-          <div class="seal">BB</div>
-          <div class="ttl">${a.title}</div>
-          <div class="st">Sealed</div>
-        </div>
-        <div class="af back">
-          ${a.img ? `<img src="${a.img}" alt="${a.name}" data-opt>` : `<div class="ph-init">${(a.name || '?').trim().charAt(0)}</div>`}
-          <div class="bt"><div class="ttl">${a.title}</div><h3>${a.name}</h3>${a.role ? `<p>${a.role}</p>` : ''}</div>
-        </div>
-      </div>
-    </div>`).join('');
-  injectWheels(wrap);
-
-  const cards = $$('.acard', wrap);
-  cards.forEach(c => {
-    const open = c.classList.contains('open');
-    const act = () => {
-      if (open) { c.classList.toggle('flip'); return; }
-      c.classList.remove('shake'); void c.offsetWidth; c.classList.add('shake');
-      note.textContent = 'The seal holds. The rhythm is not ready yet.';
-    };
-    c.addEventListener('click', act);
-    c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
-  });
-  const flipObs = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting && e.target.classList.contains('open')) {
-      const idx = cards.indexOf(e.target);
-      setTimeout(() => { e.target.classList.add('flip'); }, 700 + idx * 350);
-      flipObs.unobserve(e.target);
-    }
-  }), { threshold: .5 });
-  cards.forEach(c => { flipObs.observe(c); io.observe(c); });
-
-  function updateNote() {
-    if (items.some(a => a.open)) { note.textContent = 'Revealed. Tap a card to flip it back.'; return; }
-    if (REVEAL_AT && !timeOpen) {
-      const s = Math.max(0, Math.floor((new Date(REVEAL_AT).getTime() - Date.now()) / 1000));
-      note.textContent = `The seal breaks in ${Math.floor(s / 86400)}d ${pad(Math.floor(s % 86400 / 3600))}h ${pad(Math.floor(s % 3600 / 60))}m ${pad(s % 60)}s`;
-    } else {
-      note.textContent = 'To be revealed. Stay tuned.';
-    }
-  }
-  updateNote(); setInterval(() => { if (REVEAL_AT && !timeOpen) updateNote(); }, 1000);
-  if (REVEAL_AT && !timeOpen) setTimeout(() => location.reload(), Math.min(2147483000, new Date(REVEAL_AT).getTime() - Date.now() + 500));
-})();
 
 /* ===================================================================
    Invited schools
