@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blending Beatz | The Warrior's Rhythm · 30 October</title>
+<meta name="description" content="Blending Beatz — the brass band show by the Senior Western Boys Brass Band of Dharmapala Vidyalaya Pannipitiya. 30 October, 2.30 PM onwards, Auditorium, Faculty of Engineering, University of Sri Jayewardenepura, Mattegoda.">
+<meta name="theme-color" content="#151312">
+<meta property="og:title" content="Blending Beatz — Where Heritage Meets Harmony">
+<meta property="og:description" content="30 October · 2.30 PM onwards · Auditorium, Faculty of Engineering, USJ Mattegoda. Tickets LKR 2000 | LKR 3000.">
+<meta property="og:image" content="assets/arena-bg.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+<canvas id="embers" aria-hidden="true"></canvas>
+
+<!-- ============ CURTAIN INTRO ============ -->
+<div id="curtain" role="dialog" aria-label="Enter Blending Beatz">
+  <div class="panel left"></div>
+  <div class="panel right"></div>
+  <div class="emblem">
+    <div class="wheel-bg" data-wheel></div>
+    <p class="presents">Senior Western Boys Brass Band<br>Dharmapala Vidyalaya Pannipitiya presents</p>
+    <div class="logo-slot intro-logo">
+      <img src="assets/logo.png" alt="Blending Beatz">
+      <span class="fb">Blending<br>Beatz</span>
+    </div>
+    <button id="enter" class="btn gold" type="button">Enter the Arena</button>
+    <p class="hint">Sound on for the full experience &#9835;</p>
+  </div>
+</div>
+<div class="flash" id="flash"></div>
+
+<!-- ============ NAV ============ -->
+<header id="nav">
+  <a class="brand logo-slot" href="#top" aria-label="Blending Beatz home">
+    <img src="assets/logo.png" alt="Blending Beatz">
+    <span class="fb">Blending Beatz</span>
+  </a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#show">The Show</a>
+    <a href="#artist">Artist</a>
+    <a href="#hall">Auditorium</a>
+    <a href="#tickets">Tickets</a>
+    <a href="#sponsors">Sponsors</a>
+    <a href="#schools">Schools</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-tools">
+    <button id="sound" type="button" aria-label="Toggle sound" aria-pressed="true">&#9835;</button>
+    <button id="burger" type="button" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<a class="fab" href="#book" aria-label="Book tickets">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+  <span>Book tickets</span>
+</a>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="layer l-bg"><div class="hero-bg"></div></div>
+  <div class="layer l-wheel"><div class="hero-wheel" data-wheel></div></div>
+  <div class="smoke s1"></div>
+  <div class="smoke s2"></div>
+  <div class="drape left"></div>
+  <div class="drape right"></div>
+
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="orgs hr">
+        <div class="logo-slot sm"><img src="assets/school-crest.png" alt="Dharmapala Vidyalaya crest"><span class="fb">DVP</span></div>
+        <div class="logo-slot sm"><img src="assets/band-logo.png" alt="Senior Western Brass Band"><span class="fb">SWBB</span></div>
+        <p>Senior Western Boys Brass Band<br>Dharmapala Vidyalaya Pannipitiya <em>presents</em></p>
+      </div>
+
+      <h1 class="hero-logo logo-slot">
+        <span class="sr">Blending Beatz</span>
+        <img src="assets/logo.png" alt="">
+        <span class="fb" aria-hidden="true">Blending<br>Beatz</span>
+      </h1>
+      <p class="tagline hr">Where Heritage Meets Harmony</p>
+
+      <div class="facts hr">
+        <div class="f"><b>2.30 PM</b><small>Onwards</small></div>
+        <div class="f"><small>October</small><b class="big">30</b></div>
+        <div class="f venue">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
+          <div><b>Auditorium</b><small>Faculty of Engineering, University of Sri Jayewardenepura, Mattegoda</small></div>
+        </div>
+      </div>
+
+      <div class="countdown hr" id="countdown" aria-label="Countdown to Blending Beatz">
+        <div class="cd"><span class="num" data-u="d">00</span><span class="lbl">Days</span></div>
+        <div class="cd"><span class="num" data-u="h">00</span><span class="lbl">Hours</span></div>
+        <div class="cd"><span class="num" data-u="m">00</span><span class="lbl">Minutes</span></div>
+        <div class="cd"><span class="num" data-u="s">00</span><span class="lbl">Seconds</span></div>
+      </div>
+      <p class="cd-note hr" id="cdNote">until the curtain rises</p>
+
+      <div class="cta hr">
+        <a class="btn gold" href="#tickets">Get Tickets</a>
+        <a class="btn" href="#artist">Reveal the Artist</a>
+      </div>
+    </div>
+
+    <div class="hero-warrior">
+      <img src="assets/warrior.png" alt="Angampora warrior in golden armour" data-opt>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Blending Beatz</span><i>&#9670;</i><span>30 October</span><i>&#9670;</i><span>2.30 PM Onwards</span><i>&#9670;</i><span>Auditorium · Faculty of Engineering · USJ</span><i>&#9670;</i><span>The Warrior's Rhythm</span><i>&#9670;</i>
+    <span>Blending Beatz</span><i>&#9670;</i><span>30 October</span><i>&#9670;</i><span>2.30 PM Onwards</span><i>&#9670;</i><span>Auditorium · Faculty of Engineering · USJ</span><i>&#9670;</i><span>The Warrior's Rhythm</span><i>&#9670;</i>
+  </div>
+</div>
+
+<!-- ============ THE SHOW ============ -->
+<section class="sec" id="show">
+  <div class="sec-head rv">
+    <p class="eyebrow">The Show</p>
+    <h2 class="sec-title">Where Heritage Meets Harmony</h2>
+    <div class="orn"><span data-wheel></span></div>
+  </div>
+  <p class="lead rv">
+    Blending Beatz is the grand brass band show presented by the Senior Western Boys Brass Band of Dharmapala Vidyalaya Pannipitiya.
+    Step into an arena where the thunder of drums, the ring of brass and the spirit of the ancient warrior meet on one stage.
+  </p>
+  <div class="cards">
+    <article class="card rv" style="--d:.05s">
+      <p class="k">Date</p>
+      <h3>October 30</h3>
+      <p>Friday, 2026</p>
+    </article>
+    <article class="card rv" style="--d:.15s">
+      <p class="k">Time</p>
+      <h3>2.30 PM</h3>
+      <p>Onwards</p>
+    </article>
+    <article class="card rv" style="--d:.25s">
+      <p class="k">Venue</p>
+      <h3>Auditorium</h3>
+      <p>Faculty of Engineering<br>University of Sri Jayewardenepura, Mattegoda</p>
+    </article>
+    <article class="card rv" style="--d:.35s">
+      <p class="k">Tickets</p>
+      <h3>LKR 2000 | 3000</h3>
+      <p>Booked through our organisers</p>
+    </article>
+  </div>
+  <div class="orgs-band rv">
+    <div class="logo-slot sm"><img src="assets/school-crest.png" alt="Dharmapala Vidyalaya crest"><span class="fb">DVP</span></div>
+    <div class="logo-slot sm"><img src="assets/band-logo.png" alt="Senior Western Brass Band"><span class="fb">SWBB</span></div>
+    <p>Organised by the <strong>Senior Western Boys Brass Band</strong>, Dharmapala Vidyalaya Pannipitiya<br>
+    <span>In association with the Photographic Art Society, Dharmapala Vidyalaya Pannipitiya</span></p>
+    <div class="logo-slot sm"><img src="assets/pas-logo.png" alt="Photographic Art Society"><span class="fb">PAS</span></div>
+  </div>
+</section>
+
+<!-- ============ ARTIST REVEAL ============ -->
+<section class="sec" id="artist">
+  <div class="sec-head rv">
+    <p class="eyebrow">The Reveal</p>
+    <h2 class="sec-title">The Artist Awaits</h2>
+    <div class="orn"><span data-wheel></span></div>
+    <p class="sub">The seal is unbroken. When the drums grow louder, the name will be revealed here.</p>
+  </div>
+  <div class="artists" id="artists"></div>
+  <p class="reveal-note" id="revealNote"></p>
+</section>
+
+<!-- ============ 3D AUDITORIUM ============ -->
+<section class="sec" id="hall">
+  <div class="sec-head rv">
+    <p class="eyebrow">The Auditorium</p>
+    <h2 class="sec-title">Choose Your Place in the Arena</h2>
+    <div class="orn"><span data-wheel></span></div>
+    <p class="sub">The hall layout follows the two ticket categories. Tilt, rotate and explore.</p>
+  </div>
+
+  <div class="venue-grid">
+    <div class="hall-wrap rv">
+      <div class="hall-controls">
+        <div class="seg" role="group" aria-label="View">
+          <button type="button" class="on" data-view="3d">3D View</button>
+          <button type="button" data-view="top">Top View</button>
+          <button type="button" data-view="stage">Stage View</button>
+        </div>
+        <div class="seg" role="group" aria-label="Ticket zone">
+          <button type="button" class="on" data-zone="all">All</button>
+          <button type="button" data-zone="3">LKR 3000</button>
+          <button type="button" data-zone="2">LKR 2000</button>
+        </div>
+      </div>
+      <div class="scene" id="scene">
+        <div class="hall" id="hallModel">
+          <div class="stage"><span>Stage</span></div>
+          <div id="seats"></div>
+          <div class="entrance">&#9660; Entrance &#9660;</div>
+        </div>
+      </div>
+      <div class="legend">
+        <span><i class="sw z3"></i> LKR 3000 zone</span>
+        <span><i class="sw z2"></i> LKR 2000 zone</span>
+        <span><i class="sw st"></i> Stage</span>
+      </div>
+      <p class="fine">Illustrative layout. Final seating is confirmed by the organisers when you book.</p>
+    </div>
+
+    <aside class="venue-info rv" style="--d:.15s">
+      <h3>Auditorium</h3>
+      <p class="addr">Faculty of Engineering<br>University of Sri Jayewardenepura<br>Mattegoda</p>
+      <p class="when"><b>30 October</b> · 2.30 PM onwards</p>
+      <div class="map">
+        <iframe title="Venue map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Faculty+of+Engineering+University+of+Sri+Jayewardenepura+Mattegoda&amp;output=embed"></iframe>
+      </div>
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Faculty+of+Engineering+University+of+Sri+Jayewardenepura+Mattegoda">Open in Maps</a>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ TICKETS ============ -->
+<section class="sec" id="tickets">
+  <div class="sec-head rv">
+    <p class="eyebrow">Tickets</p>
+    <h2 class="sec-title">Grab Your Tickets Now</h2>
+    <div class="orn"><span data-wheel></span></div>
+    <p class="sub">Tickets are issued manually. Reserve yours by calling or messaging one of our organisers below.</p>
+  </div>
+
+  <div class="ticket-row">
+    <article class="ticket t2000 rv" data-tilt>
+      <div class="tk-main">
+        <div class="tk-wheel" data-wheel></div>
+        <div class="tk-head"><span class="tk-ent">Entrance</span><span class="tk-price">LKR 2000</span></div>
+        <div class="tk-body">
+          <div class="logo-slot tk-logo"><img src="assets/logo.png" alt="Blending Beatz"><span class="fb">Blending Beatz</span></div>
+          <div class="tk-date"><em>October</em><strong>30</strong><em>2.30 PM onwards</em></div>
+        </div>
+        <p class="tk-venue">Auditorium · Faculty of Engineering<br>University of Sri Jayewardenepura · Mattegoda</p>
+      </div>
+      <div class="tk-stub"><img src="assets/warrior.png" alt="" data-opt><span>Senior Western<br>Brass Band · DVP</span></div>
+    </article>
+
+    <article class="ticket t3000 rv" data-tilt style="--d:.15s">
+      <div class="tk-main">
+        <div class="tk-wheel" data-wheel></div>
+        <div class="tk-head"><span class="tk-ent">Entrance</span><span class="tk-price">LKR 3000</span></div>
+        <div class="tk-body">
+          <div class="logo-slot tk-logo"><img src="assets/logo.png" alt="Blending Beatz"><span class="fb">Blending Beatz</span></div>
+          <div class="tk-date"><em>October</em><strong>30</strong><em>2.30 PM onwards</em></div>
+        </div>
+        <p class="tk-venue">Auditorium · Faculty of Engineering<br>University of Sri Jayewardenepura · Mattegoda</p>
+      </div>
+      <div class="tk-stub"><img src="assets/warrior.png" alt="" data-opt><span>Senior Western<br>Brass Band · DVP</span></div>
+    </article>
+  </div>
+
+  <div class="howto rv" id="book">
+    <h3>How to book</h3>
+    <ol>
+      <li><b>Choose</b> your category: LKR 2000 or LKR 3000.</li>
+      <li><b>Contact</b> any organiser below by phone or WhatsApp to reserve your ticket.</li>
+      <li><b>Collect</b> your ticket in person from one of the ticket points.</li>
+    </ol>
+  </div>
+
+  <div class="people" id="people">
+    <article class="person rv"><p class="nm">Janindu</p><a class="num" href="tel:+94716752775">071 675 2775</a><div class="pb"><a class="btn sm" href="tel:+94716752775">Call</a><a class="btn sm" target="_blank" rel="noopener" href="https://wa.me/94716752775?text=Hi%2C%20I%27d%20like%20to%20book%20Blending%20Beatz%20tickets">WhatsApp</a></div></article>
+    <article class="person rv" style="--d:.08s"><p class="nm">Kaveesha</p><a class="num" href="tel:+94712885566">071 288 5566</a><div class="pb"><a class="btn sm" href="tel:+94712885566">Call</a><a class="btn sm" target="_blank" rel="noopener" href="https://wa.me/94712885566?text=Hi%2C%20I%27d%20like%20to%20book%20Blending%20Beatz%20tickets">WhatsApp</a></div></article>
+    <article class="person rv" style="--d:.16s"><p class="nm">Sasen</p><a class="num" href="tel:+94760240554">076 024 0554</a><div class="pb"><a class="btn sm" href="tel:+94760240554">Call</a><a class="btn sm" target="_blank" rel="noopener" href="https://wa.me/94760240554?text=Hi%2C%20I%27d%20like%20to%20book%20Blending%20Beatz%20tickets">WhatsApp</a></div></article>
+    <article class="person rv" style="--d:.24s"><p class="nm">Sanuthi</p><a class="num" href="tel:+94702479294">070 247 9294</a><div class="pb"><a class="btn sm" href="tel:+94702479294">Call</a><a class="btn sm" target="_blank" rel="noopener" href="https://wa.me/94702479294?text=Hi%2C%20I%27d%20like%20to%20book%20Blending%20Beatz%20tickets">WhatsApp</a></div></article>
+  </div>
+
+  <div class="points rv">
+    <p class="eyebrow">Ticket points</p>
+    <ul>
+      <li><span data-wheel></span>Senior Western Boys Brass Band Room</li>
+      <li><span data-wheel></span>Senior Western Girls Brass Band Room</li>
+      <li><span data-wheel></span>Prefects' Guild of Dharmapala Vidyalaya Pannipitiya</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SPONSORS ============ -->
+<section class="sec" id="sponsors">
+  <div class="sec-head rv">
+    <p class="eyebrow">With Gratitude</p>
+    <h2 class="sec-title">Our Sponsors</h2>
+    <div class="orn"><span data-wheel></span></div>
+  </div>
+
+  <div class="tier rv"><h3 class="plat">Platinum Sponsor</h3>
+    <div class="sp-row">
+      <div class="sp plat"><div class="logo-slot"><img src="assets/sponsors/metro-lands.png" alt="Metro Lands"><span class="fb">Metro Lands</span></div></div>
+    </div>
+  </div>
+  <div class="tier rv"><h3 class="silv">Silver Sponsors</h3>
+    <div class="sp-row">
+      <div class="sp silv"><div class="logo-slot"><img src="assets/sponsors/salota.png" alt="Salota"><span class="fb">Salota</span></div></div>
+      <div class="sp silv"><div class="logo-slot"><img src="assets/sponsors/mr-wax.png" alt="Mr. Wax Group of Companies"><span class="fb">Mr. Wax</span></div></div>
+    </div>
+  </div>
+  <div class="tier rv"><h3 class="bron">Bronze Sponsor</h3>
+    <div class="sp-row">
+      <div class="sp bron"><div class="logo-slot"><img src="assets/sponsors/summer-style-salon.png" alt="Summer Style Salon"><span class="fb">Summer Style Salon</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INVITED SCHOOLS ============ -->
+<section class="sec" id="schools">
+  <div class="sec-head rv">
+    <p class="eyebrow">Brothers in Brass</p>
+    <h2 class="sec-title">Invited Schools</h2>
+    <div class="orn"><span data-wheel></span></div>
+    <p class="sub">School bands joining us for the rhythm.</p>
+  </div>
+  <div class="schools" id="schoolGrid"></div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="foot-grid">
+    <div class="f-brand">
+      <div class="logo-slot"><img src="assets/logo.png" alt="Blending Beatz"><span class="fb">Blending Beatz</span></div>
+      <p>Where Heritage Meets Harmony.<br><em>The Warrior's Rhythm.</em></p>
+      <p class="small">Senior Western Boys Brass Band<br>Dharmapala Vidyalaya Pannipitiya</p>
+    </div>
+    <div>
+      <h4>Date &amp; Venue</h4>
+      <p class="fd"><b>Friday, 30 October 2026</b><br>2.30 PM onwards</p>
+      <p>Auditorium<br>Faculty of Engineering<br>University of Sri Jayewardenepura<br>Mattegoda</p>
+      <p><a class="lnk" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Faculty+of+Engineering+University+of+Sri+Jayewardenepura+Mattegoda">Get directions &rarr;</a></p>
+    </div>
+    <div>
+      <h4>Contact &amp; Bookings</h4>
+      <ul class="ph">
+        <li><span>Janindu</span><a href="tel:+94716752775">071 675 2775</a></li>
+        <li><span>Kaveesha</span><a href="tel:+94712885566">071 288 5566</a></li>
+        <li><span>Sasen</span><a href="tel:+94760240554">076 024 0554</a></li>
+        <li><span>Sanuthi</span><a href="tel:+94702479294">070 247 9294</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>&copy; 2026 Blending Beatz · Senior Western Boys Brass Band, Dharmapala Vidyalaya Pannipitiya · Photographic Art Society, DVP</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
