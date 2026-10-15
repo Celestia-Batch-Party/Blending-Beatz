@@ -395,13 +395,18 @@ footer::before{content:'';position:absolute;left:0;right:0;top:-1px;height:3px;b
 
 /* ================= RESPONSIVE ================= */
 @media (max-width:980px){
+  html{overflow-x:clip}
+  #nav{padding:.65rem 1rem}
+  .brand img{height:36px;max-width:clamp(120px,38vw,180px);object-fit:contain;object-position:left center}
+  #sound,#burger{width:38px;height:38px;flex:0 0 38px}
   .nav-links{position:fixed;inset:0;z-index:-1;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;background:rgba(15,10,8,.97);
     opacity:0;pointer-events:none;transition:opacity .4s}
   .nav-links a{font-size:1rem}
   body.menu .nav-links{opacity:1;pointer-events:auto}
   #burger{display:block}
-  .hero-inner{grid-template-columns:1fr;padding-top:5.6rem;gap:0}
-  .hero-warrior{width:min(100%,520px);margin-top:-1.5rem;-webkit-mask:linear-gradient(180deg,#000 82%,transparent);mask:linear-gradient(180deg,#000 82%,transparent)}
+  .hero-inner{grid-template-columns:1fr;align-items:center;padding:5.6rem clamp(1.2rem,5vw,2rem) 2rem;gap:0}
+  .hero-copy{position:relative;z-index:2;gap:.9rem;padding-bottom:0}
+  .hero-warrior{position:absolute;right:0;bottom:-.5rem;z-index:1;width:min(58vw,340px);margin:0;pointer-events:none;-webkit-mask:linear-gradient(180deg,transparent 0%,#000 25%,#000 75%,transparent 100%);mask:linear-gradient(180deg,transparent 0%,#000 25%,#000 75%,transparent 100%)}
   .hero::before{background:linear-gradient(180deg,rgba(10,6,5,.75),rgba(10,6,5,.45) 55%,transparent),linear-gradient(0deg,var(--bg) 0,transparent 18%)}
   .artists{grid-template-columns:1fr;max-width:420px;margin:0 auto}
   .acard{height:auto;aspect-ratio:3/4.1}
@@ -411,11 +416,32 @@ footer::before{content:'';position:absolute;left:0;right:0;top:-1px;height:3px;b
 }
 @media (max-width:560px){
   body{font-size:1.1rem}
+  #nav{padding:.55rem .8rem}
+  #sound,#burger{width:36px;height:36px;flex-basis:36px}
+  .hero-inner{padding:5.2rem 1rem 2rem}
+  .hero-copy{gap:.72rem}
+  .orgs{gap:.5rem}
+  .orgs p{font-size:.56rem;letter-spacing:.08em}
+  .logo-slot.sm img{height:36px}
+  .hero-logo{width:min(350px,92%)}
+  .tagline{font-size:.7rem;letter-spacing:.2em}
   .facts{flex-wrap:wrap}
+  .facts .f{padding:.65rem .85rem}
   .facts .venue{flex:1 1 100%;border-left:0!important;border-top:1px solid rgba(197,154,82,.35)}
-  .ticket{grid-template-columns:1fr 34%}
-  .tk-main{padding:1rem}
-  .tk-date strong{font-size:2.4rem}
+  .countdown{width:100%;flex-wrap:nowrap;justify-content:space-between;gap:.35rem}
+  .cd{flex:1;min-width:0;padding:.55rem .25rem .5rem}
+  .cd .num{font-size:clamp(1.45rem,7vw,2rem)}
+  .cd .lbl{font-size:.52rem;letter-spacing:.16em}
+  .cta{gap:.55rem}
+  .cta .btn{padding:.8rem 1rem;font-size:.68rem;letter-spacing:.1em}
+  .ticket{grid-template-columns:minmax(0,1fr) 28%}
+  .tk-main{padding:.8rem}
+  .tk-head{align-items:flex-start;flex-direction:column;gap:.2rem}
+  .tk-ent{font-size:.85rem}
+  .tk-price{font-size:1.05rem}
+  .tk-body{gap:.45rem}
+  .tk-logo img{width:min(30vw,110px)}
+  .tk-date strong{font-size:2.1rem}
   .tk-wheel{display:none}
   .fab span{display:none}.fab{padding:.95rem}
   .seg button{padding:.65rem .7rem}
