@@ -3,17 +3,6 @@
    =================================================================== */
 const EVENT_START = '2026-10-30T14:30:00+05:30';   // 30 Oct 2026, 2.30 PM (Sri Lanka time)
 
-/* INVITED SCHOOLS — add { name, logo } entries. Empty `name` shows a "Joining soon" slot. */
-const SCHOOLS = [
-  { name: 'Gothami Balika Vidyalaya', logo: 'assets/gothami.webp' },
-  { name: 'Anula Vidyalaya', logo: 'assets/anula.webp' },
-  { name: 'Mahinda Rajapakse National School, Homagama', logo: 'assets/mahinda.webp' },
-  { name: 'Ananda Sastralaya, Kotte', logo: 'assets/ananda.webp' },
-  { name: 'Sri Sumangala Balika Maha Vidyalaya, Panadura', logo: 'assets/sumangala.webp' },
-  { name: 'Sujatha Balika Maha Vidyalaya, Matara', logo: 'assets/sujatha.webp' },
-  { name: 'Piliyandala Central College', logo: 'assets/piliyandala.webp' }
-];
-
 /* ===================================================================
    Helpers
    =================================================================== */
@@ -212,24 +201,6 @@ $$('[data-tilt]').forEach(el => {
 });
 
 /* ===================================================================
-   Invited schools
-   =================================================================== */
-(function schools() {
-  $('#schoolGrid').innerHTML = SCHOOLS.map((s, i) => `
-    <div class="school rv${s.name ? '' : ' soon'}" style="--d:${(i % 8) * .06}s">
-      <div class="crest logo-slot">
-        ${s.logo ? `<img src="${s.logo}" alt="${s.name}">` : ''}
-        ${s.name ? `<span class="fb">${s.name.trim().charAt(0)}</span>` : ''}
-        ${!s.logo && !s.name ? '<div class="ghost" data-wheel></div>' : ''}
-      </div>
-      <p>${s.name || 'Joining soon'}</p>
-    </div>`).join('');
-  injectWheels($('#schoolGrid'));
-  $$('#schoolGrid .rv').forEach(el => io.observe(el));
-  $$('#schoolGrid img').forEach(img => { if (img.complete && img.naturalWidth === 0) handleBroken(img); });
-})();
-
-/* ===================================================================
    3D auditorium — seating follows the two ticket categories
    (front rows = LKR 3000, rear rows = LKR 2000). Illustrative layout:
    change ROWS / Z3_ROWS to match the real hall.
@@ -237,6 +208,7 @@ $$('[data-tilt]').forEach(el => {
 (function hall() {
   const ROWS = 16, Z3_ROWS = 6;
   const model = $('#hallModel'), scene = $('#scene'), seats = $('#seats');
+  if (!model || !scene || !seats) return;
   const zl = (z, i) => `<div class="zl z${z}" style="--i:${i}"><span>LKR ${z === 3 ? 3000 : 2000}</span></div>`;
   let html = '';
   for (let i = 0; i < ROWS; i++) {

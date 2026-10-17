@@ -235,6 +235,9 @@ body.entered .cta.hr{transition-delay:1.6s}
 
 /* ---- Auditorium 3D ---- */
 .venue-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.coming-soon{min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;
+  border:1px solid rgba(197,154,82,.22);background:radial-gradient(ellipse at 50% 20%,rgba(100,30,36,.35),transparent 70%),#100c0b;
+  font-family:var(--cap);font-size:1.2rem;letter-spacing:.18em;text-align:center;text-transform:uppercase;color:var(--gold-hi)}
 .hall-controls{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:space-between;margin-bottom:1.2rem}
 .seg{display:inline-flex;border:1px solid rgba(197,154,82,.5);border-radius:2px;overflow:hidden}
 .seg button{font-family:var(--cap);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;padding:.7rem 1rem;color:var(--ivory);background:transparent;border:0;cursor:pointer;transition:.3s}
@@ -276,30 +279,9 @@ body.entered .cta.hr{transition-delay:1.6s}
 
 /* ---- Tickets ---- */
 .ticket-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:2.2rem;margin-bottom:3.5rem}
-.ticket{display:grid;grid-template-columns:1fr 38%;min-height:270px;position:relative;transition:opacity 1s var(--d,0s),transform .25s ease-out;will-change:transform}
+.ticket{position:relative;padding:.45rem;border:1px solid var(--gold);background:linear-gradient(145deg,rgba(100,30,36,.6),rgba(21,19,18,.95));box-shadow:0 16px 38px rgba(0,0,0,.5),inset 0 0 0 1px rgba(243,220,160,.15);transition:opacity 1s var(--d,0s),transform .25s ease-out;will-change:transform}
 .t2000{rotate:-1.2deg}.t3000{rotate:1.2deg}
-.tk-main,.tk-stub{position:relative;overflow:hidden}
-.tk-main{padding:1.3rem 1.5rem;display:flex;flex-direction:column;justify-content:space-between;gap:.8rem;border:2px solid var(--gold);border-right:0}
-.tk-stub{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;border:2px solid var(--gold);border-left:2px dashed rgba(241,229,207,.45);padding:.8rem}
-.t2000 .tk-main{background:linear-gradient(135deg,#2a0d0b,#6e211c 70%,#8a2f2a)}
-.t2000 .tk-stub{background:linear-gradient(180deg,#8a2f2a,#3a1210)}
-.t3000 .tk-main{background:linear-gradient(135deg,#1b120c,#4b3418 70%,#8a6428)}
-.t3000 .tk-stub{background:linear-gradient(180deg,#8a6428,#2a1c0d)}
-.ticket{-webkit-mask:radial-gradient(circle 13px at calc(62% + 0px) 0,#0000 97%,#000),radial-gradient(circle 13px at calc(62% + 0px) 100%,#0000 97%,#000);
-  -webkit-mask-composite:source-in;mask:radial-gradient(circle 13px at 62% 0,#0000 97%,#000),radial-gradient(circle 13px at 62% 100%,#0000 97%,#000);mask-composite:intersect}
-.tk-wheel{position:absolute;right:-60px;top:50%;width:300px;translate:0 -50%;color:rgba(243,220,160,.12);animation:spin 80s linear infinite}
-.tk-head{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-.tk-ent{font-family:var(--cap);font-weight:700;letter-spacing:.35em;text-transform:uppercase;font-size:1.05rem;color:var(--gold-hi)}
-.tk-price{font-family:var(--display);font-weight:700;font-size:1.3rem;color:#fff3d0}
-.tk-body{position:relative;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.tk-logo img{width:clamp(120px,22vw,190px);filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))}
-.tk-logo .fb{font-size:1.5rem}
-.tk-date{display:flex;flex-direction:column;align-items:center;font-family:var(--cap);line-height:1;text-align:center}
-.tk-date em{font-style:normal;font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(241,229,207,.8)}
-.tk-date strong{font-size:3.2rem;font-weight:700;margin:.2rem 0;background:var(--goldtext);-webkit-background-clip:text;background-clip:text;color:transparent}
-.tk-venue{position:relative;font-family:var(--cap);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;line-height:1.7;color:rgba(241,229,207,.75)}
-.tk-stub img{position:absolute;left:50%;bottom:2.4rem;width:150%;max-width:none;translate:-50% 0;filter:drop-shadow(0 10px 16px rgba(0,0,0,.6))}
-.tk-stub span{position:relative;z-index:2;text-align:center;font-family:var(--cap);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,243,208,.9);line-height:1.5}
+.ticket img{width:100%;height:auto;border:1px solid rgba(243,220,160,.35)}
 
 .howto{max-width:760px;margin:0 auto 2.5rem;text-align:center}
 .howto h3{font-family:var(--display);font-size:1.7rem;margin-bottom:1.2rem;background:var(--goldtext);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -314,10 +296,11 @@ body.entered .cta.hr{transition-delay:1.6s}
 .person .nm{font-family:var(--cap);font-size:.78rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
 .person .num{display:block;font-family:var(--display);font-size:1.35rem;margin:.5rem 0 1rem;color:var(--ivory)}
 .pb{display:flex;gap:.5rem;justify-content:center}
-.points{text-align:center}
-.points ul{display:flex;flex-wrap:wrap;gap:.8rem 2rem;justify-content:center;margin-top:1rem}
-.points li{display:flex;align-items:center;gap:.6rem;font-family:var(--cap);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
-.points li [data-wheel]{width:22px;height:22px;color:var(--gold);flex:0 0 auto}
+.points{text-align:center;margin-top:1rem}
+.points ul{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1rem;margin-top:1.2rem}
+.points li{display:flex;align-items:center;gap:1rem;min-height:92px;padding:1.1rem 1.25rem;border:1px solid rgba(197,154,82,.5);background:linear-gradient(145deg,rgba(100,30,36,.4),rgba(29,25,23,.9));box-shadow:inset 0 0 0 1px rgba(243,220,160,.08);text-align:left;font-family:var(--cap);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;line-height:1.6;transition:transform .3s,border-color .3s,background .3s}
+.points li:hover{transform:translateY(-3px);border-color:var(--gold-hi);background:linear-gradient(145deg,rgba(100,30,36,.65),rgba(29,25,23,.95))}
+.point-number{display:grid;place-items:center;width:2.5rem;height:2.5rem;flex:0 0 2.5rem;border:1px solid var(--gold);border-radius:50%;font-family:var(--display);font-size:.78rem;color:var(--gold-hi);background:rgba(197,154,82,.1)}
 
 /* ---- Sponsors ---- */
 .tier{text-align:center;margin-bottom:2.8rem}
@@ -403,15 +386,8 @@ footer::before{content:'';position:absolute;left:0;right:0;top:-1px;height:3px;b
   .cd .lbl{font-size:.52rem;letter-spacing:.16em}
   .cta{gap:.55rem}
   .cta .btn{padding:.8rem 1rem;font-size:.68rem;letter-spacing:.1em}
-  .ticket{grid-template-columns:minmax(0,1fr) 28%}
-  .tk-main{padding:.8rem}
-  .tk-head{align-items:flex-start;flex-direction:column;gap:.2rem}
-  .tk-ent{font-size:.85rem}
-  .tk-price{font-size:1.05rem}
-  .tk-body{gap:.45rem}
-  .tk-logo img{width:min(30vw,110px)}
-  .tk-date strong{font-size:2.1rem}
-  .tk-wheel{display:none}
+  .ticket-row{gap:1.6rem}
+  .ticket{padding:.3rem}
   .fab span{display:none}.fab{padding:.95rem}
   .seg button{padding:.65rem .7rem}
   .hall-controls{justify-content:center}
